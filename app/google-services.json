@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "776789028999",
+    "firebase_url": "https://karmaaplication.firebaseio.com",
+    "project_id": "karmaaplication",
+    "storage_bucket": "karmaaplication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776789028999:android:576ce200729c3ade61c822",
+        "android_client_info": {
+          "package_name": "com.kebinr.karmaaplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776789028999-32vn35idchg9he5k2uk9m450gdhpmhdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc7xQn2XJn4pk2zUr1QuMkld_kFP9vJVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776789028999-32vn35idchg9he5k2uk9m450gdhpmhdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
