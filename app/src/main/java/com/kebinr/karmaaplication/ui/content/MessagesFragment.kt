@@ -25,6 +25,7 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
         MessagesAdapter(ArrayList())
 
     var userUid : String = "_"
+    var userUid2 : String = "_"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,14 +51,18 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
 
         buttonWriteTest.setOnClickListener {
             userUid = firebaseAuthViewModel.logged().value!!
+
             Log.d("MyOut","Writing message for user <"+userUid+">")
+            var chat = chatid.text.toString();
             firebaseRealTimeDBViewModelViewModel.writeNewMessage(
                 Message(
                     (0..100).random(),
-                    "Hola",
+                    chat,
                     userUid
+
                 )
             )
+            chatid.setText("")
         }
 
         buttonLogOut.setOnClickListener {
