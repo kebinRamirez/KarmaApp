@@ -13,13 +13,13 @@ class FirebaseAuthRepository {
     private lateinit var auth: FirebaseAuth
     val database = Firebase.database.reference
     var logged = MutableLiveData<String>()
-
+    var useremail = MutableLiveData<String>()
     var userCreated = MutableLiveData<Boolean>()
 
     init {
         auth = Firebase.auth
         logged.value = ""
-
+        useremail.value= ""
     }
 
     fun writeNewUser(user: User){
@@ -59,12 +59,12 @@ class FirebaseAuthRepository {
                         Log.d("MyOut", "signInWithEmailAndPassword:success " + user.email)
                         Log.d("MyOut", "signInWithEmailAndPassword:success " + user.uid)
                         logged.value = user.uid
-
+                        useremail.value = user.email
                     }
 
                 } else {
                     logged.value = ""
-
+                    useremail.value= ""
                     Log.d("MyOut", "signInWithEmailAndPassword:failure", task.exception)
                 }
             }
@@ -72,7 +72,7 @@ class FirebaseAuthRepository {
 
     fun logOut(){
         logged.value = ""
-
+        useremail.value= ""
         Firebase.auth.signOut()
     }
 

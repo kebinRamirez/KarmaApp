@@ -32,17 +32,17 @@ class MessagesAdapter(val posts: ArrayList<Message>): RecyclerView.Adapter<Messa
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(message: Message, uid: String) {
-            itemView.body.text = message.text
+            itemView.message.text = message.text
             if (uid == message.user){
                 itemView.setBackgroundColor(Color.GREEN)
-                itemView.title.text = "me"
-                itemView.title.gravity = Gravity.RIGHT
-                itemView.body.gravity = Gravity.RIGHT
+                itemView.user.text = "me"
+                itemView.user.gravity = Gravity.RIGHT
+                itemView.message.gravity = Gravity.RIGHT
             } else {
                 itemView.setBackgroundColor(Color.GRAY)
-                itemView.title.text = message.user
-                itemView.title.gravity = Gravity.LEFT
-                itemView.body.gravity = Gravity.LEFT
+                itemView.user.text = message.user
+                itemView.user.gravity = Gravity.LEFT
+                itemView.message.gravity = Gravity.LEFT
             }
         }
     }

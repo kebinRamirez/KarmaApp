@@ -11,6 +11,8 @@ class FirebaseAuthViewModel
 
     fun logged() = repository.logged
 
+    fun email() = repository.useremail
+
 
     fun userCreated() = repository.userCreated
 

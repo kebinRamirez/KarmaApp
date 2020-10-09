@@ -1,9 +1,10 @@
 package com.kebinr.karmaaplication.Storage
 
 import android.content.Context
+import androidx.lifecycle.ViewModel
 import com.kebinr.karmaaplication.model.User
 
-class SharedPrefManager private constructor(private val mCtx: Context) {
+class SharedPrefManager private constructor(private val mCtx: Context) : ViewModel(){
 
     val isLoggedIn: Boolean
         get() {
@@ -18,24 +19,17 @@ class SharedPrefManager private constructor(private val mCtx: Context) {
                 sharedPreferences.getString("email", null)!!,
                 sharedPreferences.getString("key", null)!!,
                 sharedPreferences.getString("karma", null)!!
-
-
-
                 )
         }
 
 
     fun saveUser(user: User) {
-
         val sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("email", user.email)
         editor.putString("key", user.key)
         editor.putString("karma", user.karma)
-
-
         editor.apply()
-
     }
 
     fun clear() {

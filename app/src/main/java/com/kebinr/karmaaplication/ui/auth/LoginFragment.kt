@@ -10,12 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.R
+import com.kebinr.karmaaplication.Storage.SharedPrefManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
-
+    //val sp: SharedPrefManager by activityViewModels()
     val firebaseAuthViewModel: FirebaseAuthViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
