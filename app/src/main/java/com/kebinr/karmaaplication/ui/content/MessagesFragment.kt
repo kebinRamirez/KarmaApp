@@ -31,14 +31,13 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("MyOut","MessagesFragment onViewCreated")
 
-        requireView().message_recycler.adapter = adapter
-        requireView().message_recycler.layoutManager = LinearLayoutManager(requireContext())
+        requireView().messages_recycler.adapter = adapter
+        requireView().messages_recycler.layoutManager = LinearLayoutManager(requireContext())
 
         firebaseAuthViewModel.logged().observe(getViewLifecycleOwner(), Observer { uid ->
             Log.d("MyOut","MessagesFragment logged with "+uid)
             userUid = uid
             adapter.uid = uid
-
         })
 
         firebaseRealTimeDBViewModelViewModel.ldMessageList.observe(getViewLifecycleOwner(), Observer { lista ->
@@ -46,7 +45,7 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
             adapter.posts.clear()
             adapter.posts.addAll(lista)
             adapter.notifyDataSetChanged()
-            message_recycler.scrollToPosition(lista.size -1)
+            messages_recycler.scrollToPosition(lista.size -1)
         })
 
         buttonWriteTest.setOnClickListener {

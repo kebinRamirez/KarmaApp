@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_graph"
-    app:startDestination="@id/messagesFragment">
+    app:startDestination="@id/favorFragment">
 
     <fragment
         android:id="@+id/messagesFragment"
@@ -19,4 +19,16 @@
         android:name="com.kebinr.karmaaplication.ui.auth.AuthActivity"
         android:label="activity_auth"
         tools:layout="@layout/activity_auth" />
+    <fragment
+        android:id="@+id/favorFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.favorFragment"
+        android:label="fragment_favor"
+        tools:layout="@layout/fragment_favor" >
+        <action
+            android:id="@+id/action_favorFragment_to_authActivity"
+            app:destination="@id/authActivity" />
+        <action
+            android:id="@+id/action_favorFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
 </navigation>

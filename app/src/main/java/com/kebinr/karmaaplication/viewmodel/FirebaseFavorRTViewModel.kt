@@ -8,46 +8,45 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.kebinr.karmaaplication.model.Message
+import com.kebinr.karmaaplication.model.Favor
 
-class FirebaseRealTimeDBViewModel : ViewModel(){
+class FirebaseFavorRTViewModel: ViewModel() {
     val database = Firebase.database.reference
-
-    var ldMessageList = MutableLiveData<List<Message>>()
-    val messageList = mutableListOf<Message>()
-
+    val ldfavoreslist = MutableLiveData<List<Favor>>()
+    val favoreslist = mutableListOf<Favor>()
 
     init{
         getValues()
     }
 
-    fun writeNewMessage(message: Message){
-        database.child("messages").push().setValue(message)
+    fun writeFavor(favor1: String, favor: Favor){
+        database.child("favores").push().setValue(favor)
     }
 
+    fun updateFavorStatus(userID: String, status: String){
+        database.child("favores").child("status").push().setValue(status)
+    }
     fun getValues(){
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                messageList.clear()
+                favoreslist.clear()
                 for (childDataSnapshot in dataSnapshot.children) {
-                    val message: Message = childDataSnapshot.getValue(
-                        Message::class.java)!!
+                    val favor: Favor = childDataSnapshot.getValue(
+                        Favor::class.java)!!
                     //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
                     //Log.v("MyOut", "" + message.id);
-                    messageList.add(message)
+                    favoreslist.add(favor)
                 }
-                ldMessageList.value = messageList
+                ldfavoreslist.value = favoreslist
 
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message
                 Log.w("MyOut", "loadPost:onCancelled", databaseError.toException())
                 // ...
             }
         }
-        database.child("messages").addValueEventListener(postListener)
+        database.child("favores").addValueEventListener(postListener)
 
     }
-
 }

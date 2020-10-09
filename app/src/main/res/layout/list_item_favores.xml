@@ -22,24 +22,48 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/user"
+                android:id="@+id/tipofavor"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="#1A1A1A"
                 android:layout_margin="8dp"
                 android:textAlignment="gravity"
-                android:textSize="12sp"
+                android:textColor="#1A1A1A"
+                android:textSize="24sp"
                 tools:text="Lorem Ipsum" />
 
             <TextView
-                android:id="@+id/message"
+                android:id="@+id/estado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:textSize="18sp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/Pedidopor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/detalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
 
                 android:textAlignment="gravity"
+                android:textSize="18sp"
                 tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+
+            <TextView
+                android:id="@+id/entrega"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
+                android:text="TextView" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
