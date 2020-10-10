@@ -30,5 +30,17 @@
         <action
             android:id="@+id/action_favorFragment_to_messagesFragment"
             app:destination="@id/messagesFragment" />
+        <action
+            android:id="@+id/action_favorFragment_to_tomarFavorFragment"
+            app:destination="@id/tomarFavorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tomarFavorFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.TomarFavorFragment"
+        android:label="fragment_tomar_favor"
+        tools:layout="@layout/fragment_tomar_favor" >
+        <action
+            android:id="@+id/action_tomarFavorFragment_to_authActivity"
+            app:destination="@id/authActivity" />
     </fragment>
 </navigation>

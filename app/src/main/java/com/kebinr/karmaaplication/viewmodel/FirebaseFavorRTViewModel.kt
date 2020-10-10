@@ -17,18 +17,50 @@ import com.kebinr.karmaaplication.model.User
 class FirebaseFavorRTViewModel: ViewModel() {
     val database = Firebase.database.reference
     val ldfavoreslist = MutableLiveData<List<Favor>>()
+    val ldfavoresotroslist =MutableLiveData<List<Favor>>()
     val favoreslist = mutableListOf<Favor>()
-    val user = MutableLiveData<String>()
-    init{
-        getValues()
-    }
+    val favoresotroslist = mutableListOf<Favor>()
+    val user = MutableLiveData<User>()
 
-    fun writeFavor(favor1: String, favor: Favor){
+
+    fun writeFavor(userid: String, favor: Favor){
         database.child("favores").push().setValue(favor)
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var cuserid = snapshot.getValue(User::class.java)!!
+                val hashMap : HashMap<String,Any> = HashMap()
+                hashMap["favores"] =cuserid.favores!! + 1
+                hashMap["karma"] = cuserid.karma!! - 2
+                databaseReference.updateChildren(hashMap)
+            }
+        })
     }
 
-    fun updateFavorStatus(userID: String, status: String){
-        database.child("favores").child("status").push().setValue(status)
+    fun updateFavorStatus(userID: String,usertodo: String ,usertodoid: String ){
+        val databaseReference = FirebaseDatabase.getInstance().getReference("favores")
+        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (childDataSnapshot in snapshot.children) {
+                    var favormodi  = childDataSnapshot.getValue(Favor::class.java)!!
+                    var key = childDataSnapshot.key
+                   if (favormodi.user_askingid == userID){
+                       val hashMap : HashMap<String,Any> = HashMap()
+                       hashMap["status"]= "Asignado"
+                       hashMap["user_toDo"] =  usertodo
+                       hashMap["user_toDoid"] = usertodoid
+                       databaseReference.child(key!!).updateChildren(hashMap)
+                   }
+                }
+            }
+        })
     }
 
     fun getuserInfo(userid : String){
@@ -39,23 +71,30 @@ class FirebaseFavorRTViewModel: ViewModel() {
             }
             override fun onDataChange(snapshot: DataSnapshot) {
                 var cuserid = snapshot.getValue(User::class.java)!!
-                user.value =cuserid.nombre
+                user.value =cuserid
             }
         })
     }
 
-    fun getValues(){
+    fun getValues(userid: String){
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 favoreslist.clear()
+                favoresotroslist.clear()
                 for (childDataSnapshot in dataSnapshot.children) {
-                    val favor: Favor = childDataSnapshot.getValue(
-                        Favor::class.java)!!
+                    var favor :Favor  = childDataSnapshot.getValue(Favor::class.java)!!
                     //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
                     //Log.v("MyOut", "" + message.id);
-                    favoreslist.add(favor)
+                    if (userid == favor.user_askingid){
+                        favoreslist.add(favor)
+                    }else{
+                        if (favor.status=="Inicial"){
+                            favoresotroslist.add(favor)
+                        }
+                    }
                 }
                 ldfavoreslist.value = favoreslist
+                ldfavoresotroslist.value = favoresotroslist
 
             }
             override fun onCancelled(databaseError: DatabaseError) {

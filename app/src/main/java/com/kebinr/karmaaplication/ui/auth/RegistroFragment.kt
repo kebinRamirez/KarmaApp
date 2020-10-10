@@ -46,6 +46,7 @@ class RegistroFragment : Fragment(R.layout.fragment_registro){
                 editTextTextPassword.setText("")
                 editTextTextPassword2.setText("")
                 editTextTextEmailAddress.setText("")
+                editTextTextPersonName.setText("")
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle("Registro")
                     .setMessage("Registrado Correctamente")

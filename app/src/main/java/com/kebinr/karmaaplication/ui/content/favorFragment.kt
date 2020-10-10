@@ -11,8 +11,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
+import com.kebinr.karmaaplication.model.User
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,7 +31,8 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
         FavoresAdapter(ArrayList())
     var userUid : String = "_"
     var name : String = "_"
-    var correo : String = "_"
+    var karma : Int =0
+    var favores: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,46 +51,96 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
             adapter.uid = it
             firebasefavorRTVM.getuserInfo(userUid)
             firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
-                name = it
+                name = it.nombre!!
+                karma = it.karma!!
+                favores = it.favores!!
             })
+            firebasefavorRTVM.getValues(userUid)
+            firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
+                Log.d("MyOut","Número de favores "+it.size)
+                adapter.posts.clear()
+                adapter.posts.addAll(it)
+                adapter.notifyDataSetChanged()
+            })
+
+            button3.setOnClickListener{
+                if (karma>=2 && favores<1){
+                    //se crea cuadro de dialogo personalizado
+                    val mdialog = getLayoutInflater().inflate(R.layout.favor_dialog, null)
+                    val builder = AlertDialog.Builder(requireContext()).setView(mdialog)
+                    val alerdialog = builder.show()
+                    mdialog.enviar.setOnClickListener{
+                        alerdialog.dismiss()
+                        var tipofavor =""
+                        if (mdialog.rb1.isChecked()){
+                            tipofavor="Sacar fotocopias"
+                        }
+                        if (mdialog.rb2.isChecked()){
+                            tipofavor = "Comprar km5"
+                        }
+                        if (mdialog.rb3.isChecked()){
+                            tipofavor = "Buscar domicilio puerta 7"
+                        }
+                        val detalles = mdialog.detalles.text.toString()
+                        val entrega = mdialog.entrega.text.toString()
+                        firebasefavorRTVM.writeFavor(userUid, Favor(name,"",userUid,"",tipofavor,detalles,"Inicial",entrega))
+
+                    }
+                    mdialog.dialogCancelBtn.setOnClickListener(){
+                        alerdialog.dismiss()
+                    }
+                }else{
+                    if (karma<2 && favores==1){
+                        //escribir que no se pudo por el karma y favores
+                        MaterialAlertDialogBuilder(requireContext())
+                            .setTitle("Favor")
+                            .setMessage("su karma es menor a 2 (minimo de puntos requeridos para un favor) y ya tiene un favor activo")
+                            .setPositiveButton("Aceptar") { dialog, which ->
+                                // Respond to positive button press
+                            }
+                            .show()
+                    }else{
+                        if(karma<2){
+                            //escribir que no se pudo por el karma
+                            MaterialAlertDialogBuilder(requireContext())
+                                .setTitle("Favor")
+                                .setMessage("su karma es menor a 2 (minimo de puntos requeridos para un favor)")
+                                .setPositiveButton("Aceptar") { dialog, which ->
+                                    // Respond to positive button press
+                                }
+                                .show()
+                        }else{
+                            if (favores==1){
+                                //escribir que no se pudo por favores
+                                MaterialAlertDialogBuilder(requireContext())
+                                    .setTitle("Favor")
+                                    .setMessage("ya tiene un favor activo")
+                                    .setPositiveButton("Aceptar") { dialog, which ->
+                                        // Respond to positive button press
+                                    }
+                                    .show()
+                            }
+                        }
+                    }
+                }
+                //se actualiza la data
+                firebasefavorRTVM.getuserInfo(userUid)
+                firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
+                    name = it.nombre!!
+                    karma = it.karma!!
+                    favores = it.favores!!
+                })
+            }
         })
 
-        firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
-            Log.d("MyOut","Número de favores "+it.size)
-            adapter.posts.clear()
-            adapter.posts.addAll(it)
-            adapter.notifyDataSetChanged()
-        })
 
-        button3.setOnClickListener{
-            val mdialog = getLayoutInflater().inflate(R.layout.favor_dialog, null)
-            val builder = AlertDialog.Builder(requireContext()).setView(mdialog)
-            val alerdialog = builder.show()
-            mdialog.enviar.setOnClickListener{
-                alerdialog.dismiss()
-                var tipofavor =""
-                if (mdialog.rb1.isChecked()){
-                    tipofavor="Sacar fotocopias"
-                }
-                if (mdialog.rb2.isChecked()){
-                    tipofavor = "Comprar km5"
-                }
-                if (mdialog.rb3.isChecked()){
-                    tipofavor = "Buscar domicilio puerta 7"
-                }
-                val detalles = mdialog.detalles.text.toString()
-                val entrega = mdialog.entrega.text.toString()
-
-                firebasefavorRTVM.writeFavor(userUid, Favor(name,"",userUid,"",tipofavor,detalles,"Inicial",entrega))
-            }
-            mdialog.dialogCancelBtn.setOnClickListener(){
-                alerdialog.dismiss()
-            }
-        }
 
         buttonLogOut.setOnClickListener {
             firebaseAuthViewModel.logOut()
             view.findNavController().navigate(R.id.action_favorFragment_to_authActivity)
+        }
+        button4.setOnClickListener{
+            view.findNavController().navigate(R.id.action_favorFragment_to_tomarFavorFragment)
         }
     }
 

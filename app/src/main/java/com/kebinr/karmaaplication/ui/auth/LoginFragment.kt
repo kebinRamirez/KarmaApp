@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.R
-import com.kebinr.karmaaplication.Storage.SharedPrefManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
 

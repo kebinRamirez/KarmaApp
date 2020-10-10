@@ -37,9 +37,10 @@ class FirebaseAuthRepository {
                         writeNewUser(
                             User(
                                 auth.currentUser!!.email!!,
-                                "2",
+                                2,
                                 auth.currentUser!!.uid,
-                                nombre
+                                nombre,
+                                0
                             ),auth.currentUser!!.uid
                         )
                     }
