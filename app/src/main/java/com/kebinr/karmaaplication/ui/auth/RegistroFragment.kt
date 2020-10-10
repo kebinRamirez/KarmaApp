@@ -40,9 +40,9 @@ class RegistroFragment : Fragment(R.layout.fragment_registro){
         })
         view.findViewById<Button>(R.id.button2).setOnClickListener(){
             // se registra usuario
-            if (editTextTextPassword.text.toString().equals(editTextTextPassword2.text.toString()) && editTextTextEmailAddress.text.toString()!="" ){
+            if (editTextTextPassword.text.toString().equals(editTextTextPassword2.text.toString()) && editTextTextEmailAddress.text.toString()!="" &&editTextTextPersonName.text.toString()!=""){
                 //bien, las contraseñas coinciden
-                firebaseAuthViewModel.signUp(editTextTextEmailAddress.text.toString(),editTextTextPassword.text.toString())
+                firebaseAuthViewModel.signUp(editTextTextEmailAddress.text.toString(),editTextTextPassword.text.toString(),editTextTextPersonName.text.toString())
                 editTextTextPassword.setText("")
                 editTextTextPassword2.setText("")
                 editTextTextEmailAddress.setText("")

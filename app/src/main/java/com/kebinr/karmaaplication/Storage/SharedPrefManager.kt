@@ -18,7 +18,8 @@ class SharedPrefManager private constructor(private val mCtx: Context) : ViewMod
             return User(
                 sharedPreferences.getString("email", null)!!,
                 sharedPreferences.getString("key", null)!!,
-                sharedPreferences.getString("karma", null)!!
+                sharedPreferences.getString("karma", null)!!,
+                sharedPreferences.getString("nombre", null)!!
                 )
         }
 
@@ -29,6 +30,7 @@ class SharedPrefManager private constructor(private val mCtx: Context) : ViewMod
         editor.putString("email", user.email)
         editor.putString("key", user.key)
         editor.putString("karma", user.karma)
+        editor.putString("nombre", user.karma)
         editor.apply()
     }
 

@@ -22,11 +22,11 @@ class FirebaseAuthRepository {
         useremail.value= ""
     }
 
-    fun writeNewUser(user: User){
-        database.child("users").push().setValue(user)
+    fun writeNewUser(user: User, uid: String){
+        database.child("users").child(uid).setValue(user)
     }
 
-    fun signUp(email: String, password : String){
+    fun signUp(email: String, password : String, nombre: String){
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener{ task ->
                 if (task.isSuccessful) {
@@ -36,10 +36,11 @@ class FirebaseAuthRepository {
                     if (user != null) {
                         writeNewUser(
                             User(
-                                user.email,
-                                user.uid,
-                                "2"
-                            )
+                                auth.currentUser!!.email!!,
+                                "2",
+                                auth.currentUser!!.uid,
+                                nombre
+                            ),auth.currentUser!!.uid
                         )
                     }
                     userCreated.value = true;
