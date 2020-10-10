@@ -16,8 +16,8 @@ class FirebaseAuthViewModel
 
     fun userCreated() = repository.userCreated
 
-    fun signUp(email: String, password : String){
-        repository.signUp(email,password)
+    fun signUp(email: String, password : String, nombre: String){
+        repository.signUp(email,password,nombre)
     }
 
     fun signIn(email: String, password : String){

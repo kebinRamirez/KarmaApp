@@ -28,6 +28,7 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
     private val adapter =
         FavoresAdapter(ArrayList())
     var userUid : String = "_"
+    var name : String = "_"
     var correo : String = "_"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,10 +42,16 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
         super.onViewCreated(view, savedInstanceState)
         requireView().favores_recycler.adapter = adapter
         requireView().favores_recycler.layoutManager = LinearLayoutManager(requireContext())
+
         firebaseAuthViewModel.logged().observe(getViewLifecycleOwner(), Observer {
             userUid = it
             adapter.uid = it
+            firebasefavorRTVM.getuserInfo(userUid)
+            firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
+                name = it
+            })
         })
+
         firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
             Log.d("MyOut","Número de favores "+it.size)
             adapter.posts.clear()
@@ -71,15 +78,11 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
                 val detalles = mdialog.detalles.text.toString()
                 val entrega = mdialog.entrega.text.toString()
 
-                userUid = firebaseAuthViewModel.logged().value!!
-                correo = firebaseAuthViewModel.email().value!!
-                firebasefavorRTVM.writeFavor(userUid, Favor(correo,"",userUid,"",tipofavor,detalles,"Inicial",entrega))
+                firebasefavorRTVM.writeFavor(userUid, Favor(name,"",userUid,"",tipofavor,detalles,"Inicial",entrega))
             }
             mdialog.dialogCancelBtn.setOnClickListener(){
                 alerdialog.dismiss()
             }
-
-
         }
 
         buttonLogOut.setOnClickListener {
