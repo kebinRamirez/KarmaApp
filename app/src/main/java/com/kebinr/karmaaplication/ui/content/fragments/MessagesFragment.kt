@@ -13,6 +13,7 @@ import com.kebinr.karmaaplication.viewmodel.FirebaseRealTimeDBViewModel
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Message
 import com.kebinr.karmaaplication.ui.content.adapters.MessagesAdapter
+import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_messages.*
 import kotlinx.android.synthetic.main.fragment_messages.view.*
@@ -21,48 +22,59 @@ import kotlinx.android.synthetic.main.fragment_messages.view.*
 class MessagesFragment : Fragment(R.layout.fragment_messages) {
 
     val firebaseAuthViewModel: FirebaseAuthViewModel by activityViewModels()
+    val firebasefavorRTVM : FirebaseFavorRTViewModel by activityViewModels()
     val firebaseRealTimeDBViewModelViewModel : FirebaseRealTimeDBViewModel by activityViewModels()
     private val adapter =
         MessagesAdapter(ArrayList())
 
     var userUid : String = "_"
-    var userUid2 : String = "_"
+    var name2 : String ="_"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("MyOut","MessagesFragment onViewCreated")
-
         requireView().messages_recycler.adapter = adapter
         requireView().messages_recycler.layoutManager = LinearLayoutManager(requireContext())
+        val info: String? =requireArguments()!!.getString("usuarios")
+        val secuencia = info!!.split(";")
+        val userid1 = secuencia[0]
+        val userid2 = secuencia[1]
 
         firebaseAuthViewModel.logged().observe(getViewLifecycleOwner(), Observer { uid ->
             Log.d("MyOut","MessagesFragment logged with "+uid)
             userUid = uid
             adapter.uid = uid
+            firebasefavorRTVM.getuserInfo(userid1)
+            firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
+                name2 = it.nombre!!
+                buttonWriteTest.setOnClickListener {
+                    userUid = firebaseAuthViewModel.logged().value!!
+
+                    Log.d("MyOut","Writing message for user <"+userUid+">")
+                    var chat = chatid.text.toString();
+                    firebaseRealTimeDBViewModelViewModel.writeNewMessage(
+                        Message(
+                            (0..100).random(),
+                            chat,
+                            userUid,
+                            userid2,
+                            name2
+                        )
+                    )
+                    chatid.setText("")
+                }
+            })
+            firebaseRealTimeDBViewModelViewModel.getValues(userUid,userid2)
+            firebaseRealTimeDBViewModelViewModel.ldMessageList.observe(getViewLifecycleOwner(), Observer { lista ->
+                Log.d("MyOut","Número de mensajes "+lista.size)
+                adapter.posts.clear()
+                adapter.posts.addAll(lista)
+                adapter.notifyDataSetChanged()
+                messages_recycler.scrollToPosition(lista.size -1)
+            })
+
         })
 
-        firebaseRealTimeDBViewModelViewModel.ldMessageList.observe(getViewLifecycleOwner(), Observer { lista ->
-            Log.d("MyOut","Número de mensajes "+lista.size)
-            adapter.posts.clear()
-            adapter.posts.addAll(lista)
-            adapter.notifyDataSetChanged()
-            messages_recycler.scrollToPosition(lista.size -1)
-        })
 
-        buttonWriteTest.setOnClickListener {
-            userUid = firebaseAuthViewModel.logged().value!!
 
-            Log.d("MyOut","Writing message for user <"+userUid+">")
-            var chat = chatid.text.toString();
-            firebaseRealTimeDBViewModelViewModel.writeNewMessage(
-                Message(
-                    (0..100).random(),
-                    chat,
-                    userUid
-
-                )
-            )
-            chatid.setText("")
-        }
     }
 }

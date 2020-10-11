@@ -40,7 +40,7 @@ class MessagesAdapter(val posts: ArrayList<Message>): RecyclerView.Adapter<Messa
                 itemView.message.gravity = Gravity.RIGHT
             } else {
                 itemView.setBackgroundColor(Color.GRAY)
-                itemView.user.text = message.user
+                itemView.user.text = message.destino
                 itemView.user.gravity = Gravity.LEFT
                 itemView.message.gravity = Gravity.LEFT
             }

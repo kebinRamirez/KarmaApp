@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SaliendoAnimacionFragment : Fragment(R.layout.fragment_saliendo_animacion) {
 
     val firebaseAuthViewModel: FirebaseAuthViewModel by activityViewModels()
-    lateinit var navController: NavController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,12 +28,13 @@ class SaliendoAnimacionFragment : Fragment(R.layout.fragment_saliendo_animacion)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var navController: NavController = findNavController()
         super.onViewCreated(view, savedInstanceState)
         firebaseAuthViewModel.logOut()
         val handler = Handler()
         handler.postDelayed({
             navController.navigate(R.id.authActivity)
-        }, 1000)
+        }, 100)
 
 
     }

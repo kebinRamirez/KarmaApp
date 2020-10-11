@@ -18,8 +18,10 @@ class FirebaseFavorRTViewModel: ViewModel() {
     val database = Firebase.database.reference
     val ldfavoreslist = MutableLiveData<List<Favor>>()
     val ldfavoresotroslist =MutableLiveData<List<Favor>>()
+    val ldfavoresselected = MutableLiveData<List<Favor>>()
     val favoreslist = mutableListOf<Favor>()
     val favoresotroslist = mutableListOf<Favor>()
+    val favoresselected = mutableListOf<Favor>()
     val user = MutableLiveData<User>()
 
 
@@ -35,6 +37,34 @@ class FirebaseFavorRTViewModel: ViewModel() {
                 val hashMap : HashMap<String,Any> = HashMap()
                 hashMap["favores"] =cuserid.favores!! + 1
                 hashMap["karma"] = cuserid.karma!! - 2
+                databaseReference.updateChildren(hashMap)
+            }
+        })
+    }
+    fun actualizarKarma(userid: String){
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var cuserid = snapshot.getValue(User::class.java)!!
+                val hashMap : HashMap<String,Any> = HashMap()
+                hashMap["karma"] = cuserid.karma!! + 1
+                databaseReference.updateChildren(hashMap)
+            }
+        })
+    }
+    fun actualizarFavor(userid: String){
+        val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+                var cuserid = snapshot.getValue(User::class.java)!!
+                val hashMap : HashMap<String,Any> = HashMap()
+                hashMap["favores"] = cuserid.favores!! - 1
                 databaseReference.updateChildren(hashMap)
             }
         })
@@ -62,6 +92,26 @@ class FirebaseFavorRTViewModel: ViewModel() {
             }
         })
     }
+    fun updateFavorStatus2(userID: String){
+        val databaseReference = FirebaseDatabase.getInstance().getReference("favores")
+        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (childDataSnapshot in snapshot.children) {
+                    var favormodi  = childDataSnapshot.getValue(Favor::class.java)!!
+                    var key = childDataSnapshot.key
+                    if (favormodi.user_askingid == userID){
+                        val hashMap : HashMap<String,Any> = HashMap()
+                        hashMap["status"]= "Completado"
+                        databaseReference.child(key!!).updateChildren(hashMap)
+                    }
+                }
+            }
+        })
+    }
 
     fun getuserInfo(userid : String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
@@ -85,7 +135,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
                     var favor :Favor  = childDataSnapshot.getValue(Favor::class.java)!!
                     //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
                     //Log.v("MyOut", "" + message.id);
-                    if (userid == favor.user_askingid){
+                    if (userid == favor.user_askingid && favor.status!= "Completado"){
                         favoreslist.add(favor)
                     }else{
                         if (favor.status=="Inicial"){
@@ -104,6 +154,27 @@ class FirebaseFavorRTViewModel: ViewModel() {
             }
         }
         database.child("favores").addValueEventListener(postListener)
-
+    }
+    fun getValues2(userid: String){
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                favoresselected.clear()
+                for (childDataSnapshot in dataSnapshot.children) {
+                    var favor :Favor  = childDataSnapshot.getValue(Favor::class.java)!!
+                    //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
+                    //Log.v("MyOut", "" + message.id);
+                    if (userid == favor.user_toDoid && favor.status == "Asignado"){
+                        favoresselected.add(favor)
+                    }
+                }
+                ldfavoresselected.value = favoresselected
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("MyOut", "loadPost:onCancelled", databaseError.toException())
+                // ...
+            }
+        }
+        database.child("favores").addValueEventListener(postListener)
     }
 }

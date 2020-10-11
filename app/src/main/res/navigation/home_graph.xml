@@ -19,7 +19,11 @@
         android:id="@+id/favorFragment"
         android:name="com.kebinr.karmaaplication.ui.content.fragments.favorFragment"
         android:label="fragment_favor"
-        tools:layout="@layout/fragment_favor" />
+        tools:layout="@layout/fragment_favor" >
+        <action
+            android:id="@+id/action_favorFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tomarFavorFragment"
         android:name="com.kebinr.karmaaplication.ui.content.fragments.TomarFavorFragment"
@@ -30,4 +34,13 @@
         android:name="com.kebinr.karmaaplication.ui.content.fragments.SaliendoAnimacionFragment"
         android:label="fragment_saliendo_animacion"
         tools:layout="@layout/fragment_saliendo_animacion" />
+    <fragment
+        android:id="@+id/favoresDoingFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.FavoresDoingFragment"
+        android:label="fragment_favores_doing"
+        tools:layout="@layout/fragment_favores_doing" >
+        <action
+            android:id="@+id/action_favoresDoingFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </fragment>
 </navigation>

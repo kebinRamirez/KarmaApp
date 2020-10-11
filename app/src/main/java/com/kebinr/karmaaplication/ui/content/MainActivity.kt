@@ -25,22 +25,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
         navigation_view.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_pfavor->{
                     Log.v("pru","AL MENOS LLEGO")
+                    drawer.closeDrawer(GravityCompat.START)
                     findNavController(this,R.id.nav_host_fragment).navigate(R.id.favorFragment)
                     true
                 }
                 R.id.nav_lfavor->{
+                    drawer.closeDrawer(GravityCompat.START)
                     findNavController(this,R.id.nav_host_fragment).navigate(R.id.tomarFavorFragment)
                     true
                 }
                 R.id.nav_fseleccionados->{
+                    drawer.closeDrawer(GravityCompat.START)
+                    findNavController(this,R.id.nav_host_fragment).navigate(R.id.favoresDoingFragment)
                     true
                 }
                 R.id.nav_perfil->{
+                    drawer.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_logout->{
@@ -49,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                         .setMessage("Está seguro que desea cerrar sesion")
                         .setPositiveButton("Aceptar") { dialog, which ->
                             // Respond to positive button press
+                            drawer.closeDrawer(GravityCompat.START)
                             findNavController(this,R.id.nav_host_fragment).navigate(R.id.saliendoAnimacionFragment)
                         }.setNegativeButton("Cancelar"){dialog, wich ->
                             // Respond to negative button press

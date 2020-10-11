@@ -7,9 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
@@ -21,14 +22,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
-import kotlinx.android.synthetic.main.fragment_messages.buttonLogOut
 
 @AndroidEntryPoint
-class favorFragment : Fragment(R.layout.fragment_favor) {
+class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListIteration{
     val firebaseAuthViewModel: FirebaseAuthViewModel by activityViewModels()
     val firebasefavorRTVM : FirebaseFavorRTViewModel by activityViewModels()
     private val adapter =
-        FavoresAdapter(ArrayList())
+        FavoresAdapter(ArrayList(),this)
     var userUid : String = "_"
     var name : String = "_"
     var karma : Int =0
@@ -133,13 +133,10 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
             }
         })
     }
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            favorFragment().apply {
-
-            }
+    override fun onListButtonInteraction(favor: Favor) {
+        val navController = findNavController()
+        var info : String = favor.user_askingid +";"+ favor.user_toDoid
+        val bundle = bundleOf("usuarios" to info)
+        navController.navigate(R.id.action_favorFragment_to_messagesFragment,bundle)
     }
 }

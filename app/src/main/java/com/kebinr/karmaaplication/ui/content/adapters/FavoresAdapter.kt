@@ -4,12 +4,14 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
+import com.kebinr.karmaaplication.ui.content.fragments.favorFragment
 import kotlinx.android.synthetic.main.list_item_favores.view.*
 
-class FavoresAdapter(val posts: ArrayList<Favor>): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
+class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: favorFragment): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
 
     var uid : String = ""
 
@@ -27,6 +29,11 @@ class FavoresAdapter(val posts: ArrayList<Favor>): RecyclerView.Adapter<FavoresA
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(posts[position], uid)
+
+        holder.button.setOnClickListener{
+            //ver que parametros se le mandan
+            Listener?.onListButtonInteraction(posts[position])
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +45,14 @@ class FavoresAdapter(val posts: ArrayList<Favor>): RecyclerView.Adapter<FavoresA
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
                 itemView.detalles.text = "Detalles: " + favor.details
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
+                if (favor.status!="Asignado"){
+                    itemView.isClickable=false
+                }
             }
         }
+        val button : Button = itemView.chat2
+    }
+    interface onListIteration{
+        fun onListButtonInteraction(favor: Favor)
     }
 }
