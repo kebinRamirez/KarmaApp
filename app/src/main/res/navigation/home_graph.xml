@@ -7,13 +7,9 @@
 
     <fragment
         android:id="@+id/messagesFragment"
-        android:name="com.kebinr.karmaaplication.ui.content.MessagesFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.MessagesFragment"
         android:label="fragment_messages"
-        tools:layout="@layout/fragment_messages" >
-        <action
-            android:id="@+id/action_messagesFragment_to_authActivity"
-            app:destination="@id/authActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_messages" />
     <activity
         android:id="@+id/authActivity"
         android:name="com.kebinr.karmaaplication.ui.auth.AuthActivity"
@@ -21,26 +17,17 @@
         tools:layout="@layout/activity_auth" />
     <fragment
         android:id="@+id/favorFragment"
-        android:name="com.kebinr.karmaaplication.ui.content.favorFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.favorFragment"
         android:label="fragment_favor"
-        tools:layout="@layout/fragment_favor" >
-        <action
-            android:id="@+id/action_favorFragment_to_authActivity"
-            app:destination="@id/authActivity" />
-        <action
-            android:id="@+id/action_favorFragment_to_messagesFragment"
-            app:destination="@id/messagesFragment" />
-        <action
-            android:id="@+id/action_favorFragment_to_tomarFavorFragment"
-            app:destination="@id/tomarFavorFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_favor" />
     <fragment
         android:id="@+id/tomarFavorFragment"
-        android:name="com.kebinr.karmaaplication.ui.content.TomarFavorFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.TomarFavorFragment"
         android:label="fragment_tomar_favor"
-        tools:layout="@layout/fragment_tomar_favor" >
-        <action
-            android:id="@+id/action_tomarFavorFragment_to_authActivity"
-            app:destination="@id/authActivity" />
-    </fragment>
+        tools:layout="@layout/fragment_tomar_favor" />
+    <fragment
+        android:id="@+id/saliendoAnimacionFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.SaliendoAnimacionFragment"
+        android:label="fragment_saliendo_animacion"
+        tools:layout="@layout/fragment_saliendo_animacion" />
 </navigation>

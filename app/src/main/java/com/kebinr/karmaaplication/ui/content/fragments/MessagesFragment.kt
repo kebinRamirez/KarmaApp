@@ -1,4 +1,4 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseRealTimeDBViewModel
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Message
+import com.kebinr.karmaaplication.ui.content.adapters.MessagesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_messages.*
 import kotlinx.android.synthetic.main.fragment_messages.view.*
@@ -62,11 +63,6 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
                 )
             )
             chatid.setText("")
-        }
-
-        buttonLogOut.setOnClickListener {
-            firebaseAuthViewModel.logOut()
-            view.findNavController().navigate(R.id.action_messagesFragment_to_authActivity)
         }
     }
 }

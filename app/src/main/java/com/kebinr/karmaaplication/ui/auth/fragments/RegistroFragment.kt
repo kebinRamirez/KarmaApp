@@ -1,4 +1,4 @@
-package com.kebinr.karmaaplication.ui.auth
+package com.kebinr.karmaaplication.ui.auth.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

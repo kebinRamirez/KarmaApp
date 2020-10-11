@@ -1,4 +1,4 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.adapters
 
 import android.graphics.Color
 import android.view.Gravity

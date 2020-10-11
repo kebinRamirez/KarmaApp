@@ -1,4 +1,4 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
-import com.kebinr.karmaaplication.model.User
+import com.kebinr.karmaaplication.ui.content.adapters.FavoresAdapter
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -132,16 +132,6 @@ class favorFragment : Fragment(R.layout.fragment_favor) {
                 })
             }
         })
-
-
-
-        buttonLogOut.setOnClickListener {
-            firebaseAuthViewModel.logOut()
-            view.findNavController().navigate(R.id.action_favorFragment_to_authActivity)
-        }
-        button4.setOnClickListener{
-            view.findNavController().navigate(R.id.action_favorFragment_to_tomarFavorFragment)
-        }
     }
 
     companion object {

@@ -1,6 +1,5 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,24 +10,26 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
+import com.kebinr.karmaaplication.ui.content.adapters.FavoresOtrosAdapter
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.favor_dialog.view.*
-import kotlinx.android.synthetic.main.fragment_favor.*
-import kotlinx.android.synthetic.main.fragment_favor.buttonLogOut
 import kotlinx.android.synthetic.main.fragment_favor.view.*
 import kotlinx.android.synthetic.main.fragment_messages.*
 
 @AndroidEntryPoint
-class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),FavoresOtrosAdapter.onListIteration {
+class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
+    FavoresOtrosAdapter.onListIteration {
 
     val firebaseAuthViewModel: FirebaseAuthViewModel by activityViewModels()
     val firebasefavorRTVM : FirebaseFavorRTViewModel by activityViewModels()
-    private val adapter =FavoresOtrosAdapter(ArrayList(),this)
+    private val adapter =
+        FavoresOtrosAdapter(
+            ArrayList(),
+            this
+        )
     var userUid : String = "_"
     var name : String = "_"
     var karma : Int =0
@@ -64,11 +65,6 @@ class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),FavoresOtrosA
                 adapter.notifyDataSetChanged()
             })
         })
-
-        buttonLogOut.setOnClickListener {
-            firebaseAuthViewModel.logOut()
-            view.findNavController().navigate(R.id.action_tomarFavorFragment_to_authActivity)
-        }
     }
 
     override fun onListButtonInteraction(favor: Favor, uid: String) {
