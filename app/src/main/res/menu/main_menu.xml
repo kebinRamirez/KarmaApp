@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_pfavor"
+            android:icon="@drawable/handshake"
+            android:title="Pedir Favor" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_lfavor"
+            android:icon="@drawable/shopping_list"
+            android:title="Lista Favores" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_fseleccionados"
+            android:icon="@drawable/select"
+            android:title="Favores Seleccionados" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Opciones Auth">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
+                android:id="@+id/nav_perfil"
+                android:icon="@drawable/man_with_short_hair_profile_avatar"
+                android:title="Perfil" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="Cerrar sesion" />
         </menu>
     </item>
 </menu>

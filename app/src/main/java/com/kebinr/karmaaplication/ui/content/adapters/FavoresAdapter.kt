@@ -1,7 +1,6 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.adapters
 
 import android.graphics.Color
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
 import kotlinx.android.synthetic.main.list_item_favores.view.*
-import kotlinx.android.synthetic.main.list_item_post.view.*
 
 class FavoresAdapter(val posts: ArrayList<Favor>): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
 

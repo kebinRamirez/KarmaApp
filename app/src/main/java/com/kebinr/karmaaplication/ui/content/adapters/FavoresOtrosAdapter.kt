@@ -1,4 +1,4 @@
-package com.kebinr.karmaaplication.ui.content
+package com.kebinr.karmaaplication.ui.content.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
-import kotlinx.android.synthetic.main.list_item_favores.view.*
 import kotlinx.android.synthetic.main.list_item_favores.view.Pedidopor
 import kotlinx.android.synthetic.main.list_item_favores.view.detalles
 import kotlinx.android.synthetic.main.list_item_favores.view.entrega
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.list_item_favores.view.estado
 import kotlinx.android.synthetic.main.list_item_favores.view.tipofavor
 import kotlinx.android.synthetic.main.list_item_tomar_favor.view.*
 
-class FavoresOtrosAdapter(val posts: ArrayList<Favor>,private val llListener: onListIteration ): RecyclerView.Adapter<FavoresOtrosAdapter.ViewHolder>() {
+class FavoresOtrosAdapter(val posts: ArrayList<Favor>,private val llListener: onListIteration): RecyclerView.Adapter<FavoresOtrosAdapter.ViewHolder>() {
 
     var uid : String = ""
 
