@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#6ABF69">
+        android:background="@drawable/gradient">
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -20,7 +20,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="#11000000"
+            android:backgroundTint="#000000"
+            android:drawableLeft="@drawable/ic_action_pass"
             android:ems="10"
             android:hint="Confirmar contraseña"
             android:inputType="textPassword"
@@ -66,9 +68,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="176dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="#11000000"
+            android:backgroundTint="#000000"
+            android:drawableLeft="@drawable/ic_action_user"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -78,7 +82,7 @@
             android:textColorHint="#FFFFFF"
             android:textColorLink="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -89,7 +93,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="#11000000"
+            android:backgroundTint="#000000"
+            android:drawableLeft="@drawable/ic_action_pass"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword"
@@ -109,7 +115,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="#FFFFFF"
+            android:background="#11000000"
+            android:backgroundTint="#000000"
+            android:drawableLeft="@drawable/ic_action_names"
             android:ems="10"
             android:foregroundTint="#FFFFFF"
             android:hint="Nombre"
