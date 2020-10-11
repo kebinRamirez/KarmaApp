@@ -44,6 +44,7 @@
             android:background="@drawable/border"
             android:backgroundTint="#FFFFFF"
             android:text="Registrarse"
+            android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
