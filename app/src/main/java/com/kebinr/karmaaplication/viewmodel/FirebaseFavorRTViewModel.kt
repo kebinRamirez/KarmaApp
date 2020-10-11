@@ -177,4 +177,20 @@ class FirebaseFavorRTViewModel: ViewModel() {
         }
         database.child("favores").addValueEventListener(postListener)
     }
+
+    fun getAllFavores(){
+        val favoresRef = FirebaseDatabase.getInstance().getReference("favores")
+        favoresRef.addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+               val children  = snapshot!!.children
+                children.forEach {
+                    println(it.toString())
+                }
+            }
+
+        })
+    }
 }
