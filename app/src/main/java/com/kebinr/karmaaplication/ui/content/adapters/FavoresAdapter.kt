@@ -8,10 +8,11 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
+import com.kebinr.karmaaplication.ui.content.fragments.ProfileFragment
 import com.kebinr.karmaaplication.ui.content.fragments.favorFragment
 import kotlinx.android.synthetic.main.list_item_favores.view.*
 
-class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: favorFragment): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
+class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: ProfileFragment): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
 
     var uid : String = ""
 
