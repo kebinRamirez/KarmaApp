@@ -19,6 +19,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
     val ldfavoreslist = MutableLiveData<List<Favor>>()
     val ldfavoresotroslist =MutableLiveData<List<Favor>>()
     val ldfavoresselected = MutableLiveData<List<Favor>>()
+    val Movimientos = MutableLiveData<List<Favor>>()
     val favoreslist = mutableListOf<Favor>()
     val favoresotroslist = mutableListOf<Favor>()
     val favoresselected = mutableListOf<Favor>()
@@ -168,6 +169,31 @@ class FirebaseFavorRTViewModel: ViewModel() {
                     }
                 }
                 ldfavoresselected.value = favoresselected
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("MyOut", "loadPost:onCancelled", databaseError.toException())
+                // ...
+            }
+        }
+        database.child("favores").addValueEventListener(postListener)
+    }
+    fun getValues3(userid: String){
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                favoreslist.clear()
+                favoresotroslist.clear()
+                for (childDataSnapshot in dataSnapshot.children) {
+                    var favor :Favor  = childDataSnapshot.getValue(Favor::class.java)!!
+                    //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
+                    //Log.v("MyOut", "" + message.id);
+                    if (userid == favor.user_askingid || userid == favor.user_toDoid ){
+                        favoreslist.add(favor)
+                    }
+                }
+                Movimientos.value = favoreslist
+
+
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message

@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient">
+        android:background="@drawable/fondo2">
 
         <Button
             android:id="@+id/button2"
@@ -18,7 +18,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
-            android:background=""
+            android:background="@drawable/border"
             android:text="Registrarse"
             android:textColor="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
