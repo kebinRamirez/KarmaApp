@@ -133,7 +133,7 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
             }
         })
     }
-    override fun onListButtonInteraction(favor: Favor) {
+    override fun onListButtonInteractio(favor: Favor) {
         val navController = findNavController()
         var info : String = favor.user_askingid +";"+ favor.user_toDoid
         val bundle = bundleOf("usuarios" to info)
