@@ -179,6 +179,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
         }
         database.child("favores").addValueEventListener(postListener)
     }
+  
     fun getValues3(userid: String){
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -212,5 +213,6 @@ class FirebaseFavorRTViewModel: ViewModel() {
             }
         }
         database.child("favores").addValueEventListener(postListener)
+
     }
 }
