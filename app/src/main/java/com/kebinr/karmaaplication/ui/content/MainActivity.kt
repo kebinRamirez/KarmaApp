@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_perfil->{
                     drawer.closeDrawer(GravityCompat.START)
+                    findNavController(this,R.id.nav_host_fragment).navigate(R.id.perfilFragment)
                     true
                 }
                 R.id.nav_logout->{

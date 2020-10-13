@@ -43,4 +43,9 @@
             android:id="@+id/action_favoresDoingFragment_to_messagesFragment"
             app:destination="@id/messagesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.kebinr.karmaaplication.ui.content.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
 </navigation>
