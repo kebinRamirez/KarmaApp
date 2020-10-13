@@ -8,11 +8,9 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
-import com.kebinr.karmaaplication.ui.content.fragments.ProfileFragment
-import com.kebinr.karmaaplication.ui.content.fragments.favorFragment
 import kotlinx.android.synthetic.main.list_item_favores.view.*
 
-class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: ProfileFragment): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
+class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: onListIteration): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
 
     var uid : String = ""
 
@@ -33,7 +31,7 @@ class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: ProfileF
 
         holder.button.setOnClickListener{
             //ver que parametros se le mandan
-            Listener?.onListButtonInteraction(posts[position])
+            Listener?.onListButtonInteractio(posts[position])
         }
     }
 
@@ -54,6 +52,6 @@ class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: ProfileF
         val button : Button = itemView.chat2
     }
     interface onListIteration{
-        fun onListButtonInteraction(favor: Favor)
+        fun onListButtonInteractio(favor: Favor)
     }
 }
