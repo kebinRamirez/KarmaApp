@@ -11,6 +11,7 @@ import com.kebinr.karmaaplication.model.Favor
 import com.kebinr.karmaaplication.ui.content.fragments.PerfilFragment
 import com.kebinr.karmaaplication.ui.content.fragments.favorFragment
 import kotlinx.android.synthetic.main.list_item_favores.view.*
+import kotlinx.android.synthetic.main.list_item_favores_doing.view.*
 
 class PerfilAdapter(val posts: ArrayList<Favor>, private val Listener: PerfilFragment): RecyclerView.Adapter<PerfilAdapter.ViewHolder>() {
 
@@ -36,15 +37,23 @@ class PerfilAdapter(val posts: ArrayList<Favor>, private val Listener: PerfilFra
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favor: Favor, uid: String) {
-            if (uid == favor.user_askingid){
-                itemView.setBackgroundColor(Color.GREEN)
+
+            if (uid != favor.user_askingid){
+                itemView.setBackgroundColor(Color.BLUE)
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " +favor.status
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
                 itemView.detalles.text = "Detalles: " + favor.details
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
-
+            }else {
+                itemView.setBackgroundColor(Color.GREEN)
+                itemView.tipofavor.text = favor.type
+                itemView.estado.text = "Estado: " + favor.status
+                itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
+                itemView.detalles.text = "Detalles: " + favor.details
+                itemView.entrega.text = "Punto de entrega: " + favor.delivery
             }
+
         }
 
     }

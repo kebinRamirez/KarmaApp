@@ -61,11 +61,10 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
             NombreP.text = name
             karmaP.text = karma.toString()
 
-
+            firebasefavorRTVM.getValues3(userUid)
             firebasefavorRTVM.Movimientos.observe(getViewLifecycleOwner(), Observer {
                 Log.d("MyOut","Número de favores "+it.size)
                 adapter.posts.clear()
-
                 adapter.posts.addAll(it)
                 adapter.notifyDataSetChanged()
             })

@@ -21,6 +21,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
     val ldfavoresselected = MutableLiveData<List<Favor>>()
     val Movimientos = MutableLiveData<List<Favor>>()
     val favoreslist = mutableListOf<Favor>()
+    val ultimos3 = mutableListOf<Favor>()
     val favoresotroslist = mutableListOf<Favor>()
     val favoresselected = mutableListOf<Favor>()
     val user = MutableLiveData<User>()
@@ -183,15 +184,24 @@ class FirebaseFavorRTViewModel: ViewModel() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 favoreslist.clear()
                 favoresotroslist.clear()
+                ultimos3.clear()
                 for (childDataSnapshot in dataSnapshot.children) {
                     var favor :Favor  = childDataSnapshot.getValue(Favor::class.java)!!
                     //Log.v("MyOut", "" + childDataSnapshot.getKey()); //displays the key for the node
                     //Log.v("MyOut", "" + message.id);
-                    if (userid == favor.user_askingid || userid == favor.user_toDoid ){
+                    if (userid == favor.user_askingid || (userid == favor.user_toDoid &&  ( favor.status == "Asignado" || favor.status == "Completado"))){
                         favoreslist.add(favor)
                     }
                 }
-                Movimientos.value = favoreslist
+                if(favoreslist.size >= 3) {
+
+                    ultimos3.add(favoreslist[favoreslist.size-1])
+                    ultimos3.add(favoreslist[favoreslist.size - 2])
+                    ultimos3.add(favoreslist[favoreslist.size - 3])
+                    Movimientos.value = ultimos3
+                }else {
+                    Movimientos.value = favoreslist
+                }
 
 
             }
