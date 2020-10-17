@@ -24,16 +24,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/auth_nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="404dp"
-        android:layout_height="653dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/auth_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
