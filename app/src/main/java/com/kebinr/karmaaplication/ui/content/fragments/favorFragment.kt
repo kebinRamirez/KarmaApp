@@ -55,7 +55,7 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
                 karma = it.karma!!
                 favores = it.favores!!
             })
-            firebasefavorRTVM.getValues(userUid)
+            firebasefavorRTVM.getValues(userUid,"")
             firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
                 Log.d("MyOut","Número de favores "+it.size)
                 adapter.posts.clear()

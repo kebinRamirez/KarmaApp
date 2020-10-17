@@ -44,9 +44,7 @@ class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: onListIt
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
                 itemView.detalles.text = "Detalles: " + favor.details
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
-                if (favor.status!="Asignado"){
-                    itemView.isClickable=false
-                }
+                itemView.chat2.isEnabled = favor.status == "Asignado"
             }
         }
         val button : Button = itemView.chat2

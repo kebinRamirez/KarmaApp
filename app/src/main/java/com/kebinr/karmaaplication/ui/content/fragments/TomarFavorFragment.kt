@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
 import com.kebinr.karmaaplication.ui.content.adapters.FavoresOtrosAdapter
@@ -18,6 +19,7 @@ import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favor.view.*
 import kotlinx.android.synthetic.main.fragment_messages.*
+import kotlinx.android.synthetic.main.fragment_tomar_favor.*
 
 @AndroidEntryPoint
 class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
@@ -57,7 +59,37 @@ class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
                 karma = it.karma!!
                 favores = it.favores!!
             })
-            firebasefavorRTVM.getValues(userUid)
+            firebasefavorRTVM.getValues(userUid,"")
+            //filtrar los favores
+            button5.setOnClickListener {
+                if (radioButton6.isChecked()){
+                    firebasefavorRTVM.getValues(userUid,"Sacar fotocopias")
+                }else{
+                    if (radioButton7.isChecked()){
+                        firebasefavorRTVM.getValues(userUid,"Comprar km5")
+                    }else{
+                        if (radioButton8.isChecked()){
+                            firebasefavorRTVM.getValues(userUid,"Buscar domicilio puerta 7")
+                        }else{
+                            MaterialAlertDialogBuilder(requireContext())
+                                .setTitle("Filtros")
+                                .setMessage("Debe seleccionar un filtro primero para que sea valido")
+                                .setPositiveButton("Aceptar") { dialog, which ->
+                                    // Respond to positive button press
+                                }
+                                .show()
+                        }
+                    }
+                }
+
+            }
+            //limpiar filtros
+            button4.setOnClickListener {
+                radioButton6.isChecked = false
+                radioButton7.isChecked = false
+                radioButton8.isChecked = false
+                firebasefavorRTVM.getValues(userUid,"")
+            }
             firebasefavorRTVM.ldfavoresotroslist.observe(getViewLifecycleOwner(), Observer {
                 Log.d("MyOut","Número de favores "+it.size)
                 adapter.posts.clear()
@@ -65,6 +97,7 @@ class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
                 adapter.notifyDataSetChanged()
             })
         })
+
     }
 
     override fun onListButtonInteraction(favor: Favor, uid: String) {
