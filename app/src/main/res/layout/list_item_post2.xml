@@ -7,12 +7,17 @@
     android:layout_height="wrap_content"
     android:padding="5sp"
     xmlns:tools="http://schemas.android.com/tools"
->
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,21 +27,14 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#3F51B5"
-                card_view:cardBackgroundColor="#3F51B5"
+                android:background="#4CAF50"
+                card_view:cardBackgroundColor="#4CAF50"
                 card_view:cardCornerRadius="10dp"
                 card_view:contentPadding="5sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5"
-                        card_view:srcCompat="@drawable/ic_action_names" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -49,7 +47,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAlignment="gravity"
+                            android:textAlignment="textEnd"
                             android:textColor="#FFFFFF"
                             android:textColorHint="#FFFFFF"
                             android:textSize="12sp"
@@ -61,11 +59,18 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:textAlignment="gravity"
+                            android:textAlignment="textEnd"
                             android:textColor="#FFFFFF"
                             android:textSize="18sp"
                             tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
                     </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        card_view:srcCompat="@drawable/ic_action_names" />
 
                 </LinearLayout>
 
@@ -73,10 +78,6 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="3" />
     </LinearLayout>
 
 
