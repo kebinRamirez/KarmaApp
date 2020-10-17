@@ -10,7 +10,7 @@
         android:id="@+id/textview_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Chat"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -20,49 +20,44 @@
 
     <Button
         android:id="@+id/buttonWriteTest"
-        android:layout_width="65dp"
-        android:layout_height="63dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="66dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:textColor="@color/colorWhite"
         app:icon="@drawable/ic_action_send"
         app:iconSize="40dp"
         app:iconTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/chatid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toTopOf="@+id/chatid" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messages_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/chatid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_first" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="298dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        app:hintAnimationEnabled="false"
-        app:hintEnabled="false"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonWriteTest"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonWriteTest">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/chatid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Escribe algo" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/chatid"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Escribe algo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonWriteTest"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

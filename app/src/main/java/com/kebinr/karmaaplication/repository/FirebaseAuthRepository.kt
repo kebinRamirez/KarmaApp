@@ -10,19 +10,18 @@ import com.kebinr.karmaaplication.model.User
 
 class FirebaseAuthRepository {
 
-    private lateinit var auth: FirebaseAuth
-    val database = Firebase.database.reference
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val database = Firebase.database.reference
     var logged = MutableLiveData<String>()
     var useremail = MutableLiveData<String>()
     var userCreated = MutableLiveData<Boolean>()
 
     init {
-        auth = Firebase.auth
         logged.value = ""
         useremail.value= ""
     }
 
-    fun writeNewUser(user: User, uid: String){
+    private fun writeNewUser(user: User, uid: String){
         database.child("users").child(uid).setValue(user)
     }
 
