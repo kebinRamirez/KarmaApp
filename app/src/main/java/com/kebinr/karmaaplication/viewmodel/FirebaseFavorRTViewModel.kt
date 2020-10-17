@@ -20,6 +20,8 @@ class FirebaseFavorRTViewModel: ViewModel() {
     val ldfavoresotroslist =MutableLiveData<List<Favor>>()
     val ldfavoresselected = MutableLiveData<List<Favor>>()
     val Movimientos = MutableLiveData<List<Favor>>()
+    val karma = MutableLiveData<Int>()
+    val favores = MutableLiveData<Int>()
     val favoreslist = mutableListOf<Favor>()
     val ultimos3 = mutableListOf<Favor>()
     val favoresotroslist = mutableListOf<Favor>()
@@ -30,7 +32,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
     fun writeFavor(userid: String, favor: Favor){
         database.child("favores").push().setValue(favor)
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -38,14 +40,17 @@ class FirebaseFavorRTViewModel: ViewModel() {
                 var cuserid = snapshot.getValue(User::class.java)!!
                 val hashMap : HashMap<String,Any> = HashMap()
                 hashMap["favores"] =cuserid.favores!! + 1
+                favores.value = cuserid.favores!! + 1
                 hashMap["karma"] = cuserid.karma!! - 2
+                karma.value = cuserid.karma!! - 2
                 databaseReference.updateChildren(hashMap)
             }
         })
     }
+
     fun actualizarKarma(userid: String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -53,13 +58,14 @@ class FirebaseFavorRTViewModel: ViewModel() {
                 var cuserid = snapshot.getValue(User::class.java)!!
                 val hashMap : HashMap<String,Any> = HashMap()
                 hashMap["karma"] = cuserid.karma!! + 1
+                karma.value = cuserid.karma!! + 1
                 databaseReference.updateChildren(hashMap)
             }
         })
     }
     fun actualizarFavor(userid: String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -67,6 +73,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
                 var cuserid = snapshot.getValue(User::class.java)!!
                 val hashMap : HashMap<String,Any> = HashMap()
                 hashMap["favores"] = cuserid.favores!! - 1
+                favores.value =cuserid.favores!! - 1
                 databaseReference.updateChildren(hashMap)
             }
         })
@@ -74,7 +81,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
 
     fun updateFavorStatus(userID: String,usertodo: String ,usertodoid: String ){
         val databaseReference = FirebaseDatabase.getInstance().getReference("favores")
-        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addListenerForSingleValueEvent(object :ValueEventListener{
+        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -83,7 +90,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
                 for (childDataSnapshot in snapshot.children) {
                     var favormodi  = childDataSnapshot.getValue(Favor::class.java)!!
                     var key = childDataSnapshot.key
-                   if (favormodi.user_askingid == userID){
+                   if (favormodi.user_askingid == userID && favormodi.status!="Completado"){
                        val hashMap : HashMap<String,Any> = HashMap()
                        hashMap["status"]= "Asignado"
                        hashMap["user_toDo"] =  usertodo
@@ -96,7 +103,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
     }
     fun updateFavorStatus2(userID: String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("favores")
-        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addListenerForSingleValueEvent(object :ValueEventListener{
+        databaseReference.orderByChild("user_askingid").equalTo(userID).limitToFirst(1).ref.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -109,6 +116,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
                         val hashMap : HashMap<String,Any> = HashMap()
                         hashMap["status"]= "Completado"
                         databaseReference.child(key!!).updateChildren(hashMap)
+                        break
                     }
                 }
             }
@@ -117,7 +125,7 @@ class FirebaseFavorRTViewModel: ViewModel() {
 
     fun getuserInfo(userid : String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userid)
-        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener{
+        databaseReference.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }

@@ -62,7 +62,12 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
                 adapter.posts.addAll(it)
                 adapter.notifyDataSetChanged()
             })
-
+            firebasefavorRTVM.karma.observe(getViewLifecycleOwner(), Observer {
+                karma = it
+            })
+            firebasefavorRTVM.favores.observe(getViewLifecycleOwner(), Observer {
+                favores = it
+            })
             button3.setOnClickListener{
                 if (karma>=2 && favores<1){
                     //se crea cuadro de dialogo personalizado

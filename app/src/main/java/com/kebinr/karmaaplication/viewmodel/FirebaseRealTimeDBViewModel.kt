@@ -29,7 +29,7 @@ class FirebaseRealTimeDBViewModel : ViewModel(){
 
     fun getValues(userid1: String, userid2: String){
         val databaseReference = FirebaseDatabase.getInstance().getReference("messages")
-        databaseReference.addListenerForSingleValueEvent(object :ValueEventListener{
+        databaseReference.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }

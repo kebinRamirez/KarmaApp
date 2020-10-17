@@ -58,6 +58,10 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
                 karma = it.karma!!
                 favores = it.favores!!
             })
+            firebasefavorRTVM.karma.observe(getViewLifecycleOwner(), Observer{
+                karma = it
+                karmaP.text = karma.toString()
+            })
             NombreP.text = name
             karmaP.text = karma.toString()
 
