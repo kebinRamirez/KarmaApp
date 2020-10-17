@@ -67,10 +67,12 @@
 
             <Button
                 android:id="@+id/tf"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:text="Tomar"
+                android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

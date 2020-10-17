@@ -7,24 +7,21 @@ import com.kebinr.karmaaplication.repository.FirebaseAuthRepository
 class FirebaseAuthViewModel
 @ViewModelInject constructor(
     private val repository: FirebaseAuthRepository
-): ViewModel() {
+) : ViewModel() {
 
     fun logged() = repository.logged
 
-    fun email() = repository.useremail
-
-
     fun userCreated() = repository.userCreated
 
-    fun signUp(email: String, password : String, nombre: String){
-        repository.signUp(email,password,nombre)
+    fun signUp(email: String, password: String, nombre: String) {
+        repository.signUp(email, password, nombre)
     }
 
-    fun signIn(email: String, password : String){
-        repository.signIn(email,password)
+    fun signIn(email: String, password: String) {
+        repository.signIn(email, password)
     }
 
-    fun logOut(){
+    fun logOut() {
         repository.logOut()
     }
 
