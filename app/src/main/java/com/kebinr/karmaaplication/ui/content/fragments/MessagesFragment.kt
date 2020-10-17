@@ -43,38 +43,31 @@ class MessagesFragment : Fragment(R.layout.fragment_messages) {
             Log.d("MyOut","MessagesFragment logged with "+uid)
             userUid = uid
             adapter.uid = uid
-            firebasefavorRTVM.getuserInfo(userid1)
-            firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
-                name2 = it.nombre!!
-                buttonWriteTest.setOnClickListener {
-                    userUid = firebaseAuthViewModel.logged().value!!
-
-                    Log.d("MyOut","Writing message for user <"+userUid+">")
-                    var chat = chatid.text.toString();
-                    firebaseRealTimeDBViewModelViewModel.writeNewMessage(
-                        Message(
-                            (0..100).random(),
-                            chat,
-                            userUid,
-                            userid2,
-                            name2
-                        )
-                    )
-                    chatid.setText("")
-                }
-            })
-            firebaseRealTimeDBViewModelViewModel.getValues(userUid,userid2)
-            firebaseRealTimeDBViewModelViewModel.ldMessageList.observe(getViewLifecycleOwner(), Observer { lista ->
-                Log.d("MyOut","Número de mensajes "+lista.size)
-                adapter.posts.clear()
-                adapter.posts.addAll(lista)
-                adapter.notifyDataSetChanged()
-                messages_recycler.scrollToPosition(lista.size -1)
-            })
-
         })
-
-
-
+        firebasefavorRTVM.getuserInfo(userid1)
+        firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
+            name2 = it.nombre!!
+            buttonWriteTest.setOnClickListener {
+                var chat = chatid.text.toString();
+                firebaseRealTimeDBViewModelViewModel.writeNewMessage(
+                    Message(
+                        (0..100).random(),
+                        chat,
+                        userid1,
+                        userid2,
+                        name2
+                    )
+                )
+                chatid.setText("")
+            }
+        })
+        firebaseRealTimeDBViewModelViewModel.getValues(userid1,userid2)
+        firebaseRealTimeDBViewModelViewModel.ldMessageList.observe(getViewLifecycleOwner(), Observer { lista ->
+            Log.d("MyOut","Número de mensajes "+lista.size)
+            adapter.posts.clear()
+            adapter.posts.addAll(lista)
+            adapter.notifyDataSetChanged()
+            messages_recycler.scrollToPosition(lista.size -1)
+        })
     }
 }
