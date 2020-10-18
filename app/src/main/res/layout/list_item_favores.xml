@@ -34,9 +34,12 @@
                 tools:text="Lorem Ipsum" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="#FFFFFF"
                 android:orientation="vertical">
 
@@ -77,17 +80,18 @@
                     android:text="TextView"
                     android:textColor="#4CAF50"
                     android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/chat2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="#FDFCFC"
+                    android:text="Chat"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/chat2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="#FDFCFC"
-                android:text="Chat"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
