@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.list_item_favores.view.detalles
 import kotlinx.android.synthetic.main.list_item_favores.view.entrega
 import kotlinx.android.synthetic.main.list_item_favores.view.estado
 import kotlinx.android.synthetic.main.list_item_favores.view.tipofavor
+import kotlinx.android.synthetic.main.list_item_movimientos.view.*
 import kotlinx.android.synthetic.main.list_item_tomar_favor.view.*
 
 class FavoresOtrosAdapter(val posts: ArrayList<Favor>,private val llListener: onListIteration): RecyclerView.Adapter<FavoresOtrosAdapter.ViewHolder>() {
@@ -43,7 +44,6 @@ class FavoresOtrosAdapter(val posts: ArrayList<Favor>,private val llListener: on
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favor: Favor, uid: String) {
             if (uid != favor.user_askingid){
-                itemView.setBackgroundColor(Color.BLUE)
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " +favor.status
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking

@@ -10,8 +10,10 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/CvTomarfavor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        card_view:cardBackgroundColor="#3F51B5"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
@@ -27,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:textAlignment="gravity"
-                android:textColor="#1A1A1A"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 tools:text="Lorem Ipsum" />
 
@@ -36,16 +38,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/Pedidopor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/detalles"
@@ -54,6 +58,7 @@
                 android:layout_margin="8dp"
 
                 android:textAlignment="gravity"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
 
@@ -62,8 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/tf"

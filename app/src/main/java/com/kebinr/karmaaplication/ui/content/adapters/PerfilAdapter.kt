@@ -1,16 +1,12 @@
 package com.kebinr.karmaaplication.ui.content.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
 import com.kebinr.karmaaplication.ui.content.fragments.PerfilFragment
-import com.kebinr.karmaaplication.ui.content.fragments.favorFragment
-import kotlinx.android.synthetic.main.list_item_favores.view.*
 import kotlinx.android.synthetic.main.list_item_favores.view.Pedidopor
 import kotlinx.android.synthetic.main.list_item_favores.view.detalles
 import kotlinx.android.synthetic.main.list_item_favores.view.entrega
@@ -45,14 +41,14 @@ class PerfilAdapter(val posts: ArrayList<Favor>, private val Listener: PerfilFra
         fun bind(favor: Favor, uid: String) {
 
             if (uid != favor.user_askingid){
-                itemView.cv.setCardBackgroundColor(Color.BLUE)
+                itemView.cvp.setCardBackgroundColor(0X3F51B5)
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " +favor.status
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
                 itemView.detalles.text = "Detalles: " + favor.details
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
             }else {
-                itemView.cv.setCardBackgroundColor(Color.GREEN)
+                itemView.cvp.setCardBackgroundColor(0x4CAF50)
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " + favor.status
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking

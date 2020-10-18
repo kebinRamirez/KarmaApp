@@ -12,18 +12,6 @@
         android:layout_marginEnd="60dp"
         android:background="@drawable/round_message">
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:srcCompat="@drawable/ic_action_names" />
-
         <TextView
             android:id="@+id/user"
             android:layout_width="0dp"
@@ -39,6 +27,18 @@
             card_view:layout_constraintStart_toEndOf="@+id/imageView6"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:text="User" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:srcCompat="@drawable/ic_action_names" />
 
         <TextView
             android:id="@+id/message"
