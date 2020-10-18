@@ -22,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 @AndroidEntryPoint
 class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListIteration{
@@ -43,6 +44,7 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         requireView().favores_recycler.adapter = adapter
         requireView().favores_recycler.layoutManager = LinearLayoutManager(requireContext())
 
@@ -54,7 +56,9 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
                 name = it.nombre!!
                 karma = it.karma!!
                 favores = it.favores!!
+
             })
+
             firebasefavorRTVM.getValues(userUid,"")
             firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
                 Log.d("MyOut","Número de favores "+it.size)

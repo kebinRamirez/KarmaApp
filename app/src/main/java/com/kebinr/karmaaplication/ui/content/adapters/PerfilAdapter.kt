@@ -1,5 +1,6 @@
 package com.kebinr.karmaaplication.ui.content.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,19 +42,27 @@ class PerfilAdapter(val posts: ArrayList<Favor>, private val Listener: PerfilFra
         fun bind(favor: Favor, uid: String) {
 
             if (uid != favor.user_askingid){
-                itemView.cvp.setCardBackgroundColor(0X3F51B5)
+                itemView.cvp.setCardBackgroundColor(Color.parseColor("#3F51B5"))
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " +favor.status
+                itemView.estado.setTextColor(Color.parseColor("#3F51B5"))
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
+                itemView.Pedidopor.setTextColor(Color.parseColor("#3F51B5"))
                 itemView.detalles.text = "Detalles: " + favor.details
+                itemView.detalles.setTextColor(Color.parseColor("#3F51B5"))
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
+                itemView.entrega.setTextColor(Color.parseColor("#3F51B5"))
             }else {
-                itemView.cvp.setCardBackgroundColor(0x4CAF50)
+                itemView.cvp.setCardBackgroundColor(Color.parseColor("#4CAF50"))
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " + favor.status
+                itemView.estado.setTextColor(Color.parseColor("#4CAF50"))
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking
+                itemView.Pedidopor.setTextColor(Color.parseColor("#4CAF50"))
                 itemView.detalles.text = "Detalles: " + favor.details
+                itemView.detalles.setTextColor(Color.parseColor("#4CAF50"))
                 itemView.entrega.text = "Punto de entrega: " + favor.delivery
+                itemView.entrega.setTextColor(Color.parseColor("#4CAF50"))
             }
 
         }

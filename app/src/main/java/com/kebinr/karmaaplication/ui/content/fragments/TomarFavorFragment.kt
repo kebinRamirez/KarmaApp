@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favor.view.*
 import kotlinx.android.synthetic.main.fragment_messages.*
 import kotlinx.android.synthetic.main.fragment_tomar_favor.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 @AndroidEntryPoint
 class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
@@ -53,11 +54,13 @@ class TomarFavorFragment : Fragment(R.layout.fragment_tomar_favor),
         firebaseAuthViewModel.logged().observe(getViewLifecycleOwner(), Observer {
             userUid = it
             adapter.uid = it
+
             firebasefavorRTVM.getuserInfo(userUid)
             firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
                 name = it.nombre!!
                 karma = it.karma!!
                 favores = it.favores!!
+
             })
             firebasefavorRTVM.getValues(userUid,"")
             //filtrar los favores
