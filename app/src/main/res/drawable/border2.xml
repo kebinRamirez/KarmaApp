@@ -1,7 +1,5 @@
 <?xml version ="1.0" encoding ="utf-8"?><!-- #388e3c Learn More about how to use App Actions: https://developer.android.com/guide/actions/index.html -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="16dp"/>
-    <solid android:color="#388e3c"/>
-
+    <stroke android:width="2dp" android:color="#388e3c"/>
 </shape>
-

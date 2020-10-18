@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv"
+        android:id="@+id/cvp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         card_view:cardBackgroundColor="#3F51B5"
@@ -33,43 +33,55 @@
                 android:textSize="24sp"
                 tools:text="Lorem Ipsum" />
 
-            <TextView
-                android:id="@+id/estado"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="345dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/Pedidopor"
+                <TextView
+                    android:id="@+id/estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Pedidopor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detalles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+
+                    android:textAlignment="gravity"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp"
+                    tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+
+                <TextView
+                    android:id="@+id/entrega"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/detalles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-
-                android:textAlignment="gravity"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp"
-                tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
-
-            <TextView
-                android:id="@+id/entrega"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:layout_height="10dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -10,8 +10,10 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/CvFavores"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        card_view:cardBackgroundColor="#4CAF50"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
@@ -27,49 +29,62 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:textAlignment="gravity"
-                android:textColor="#1A1A1A"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 tools:text="Lorem Ipsum" />
 
-            <TextView
-                android:id="@+id/estado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/Pedidopor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#4CAF50"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/detalles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                <TextView
+                    android:id="@+id/Pedidopor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#4CAF50"
+                    android:textSize="18sp" />
 
-                android:textAlignment="gravity"
-                android:textSize="18sp"
-                tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+                <TextView
+                    android:id="@+id/detalles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
 
-            <TextView
-                android:id="@+id/entrega"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+                    android:textAlignment="gravity"
+                    android:textColor="#4CAF50"
+                    android:textSize="18sp"
+                    tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+
+                <TextView
+                    android:id="@+id/entrega"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#4CAF50"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/chat2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:background="#FDFCFC"
                 android:text="Chat"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />

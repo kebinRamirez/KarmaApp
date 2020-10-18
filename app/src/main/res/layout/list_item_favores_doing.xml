@@ -10,8 +10,11 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/Cardv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#3F51B5"
+        card_view:cardBackgroundColor="#3F51B5"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="5dp"
         card_view:cardUseCompatPadding="true">
@@ -27,52 +30,65 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:textAlignment="gravity"
-                android:textColor="#1A1A1A"
+                android:textColor="#FFFFFF"
                 android:textSize="24sp"
                 tools:text="Lorem Ipsum" />
 
-            <TextView
-                android:id="@+id/estado2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/Pedidopor2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/estado2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/detalles2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/Pedidopor2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
 
-                android:layout_margin="8dp"
-                android:textAlignment="gravity"
-                android:textSize="18sp"
-                tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+                <TextView
+                    android:id="@+id/detalles2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/entrega2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="18sp" />
+                    android:layout_margin="8dp"
+                    android:textAlignment="gravity"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp"
+                    tools:text="Lorem Ipsum Dolor sit amet consectetur adipiscing elit" />
+
+                <TextView
+                    android:id="@+id/entrega2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="TextView"
+                    android:textColor="#3F51B5"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/chat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="1dp"
                 android:text="Chat"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
@@ -81,13 +97,18 @@
                 android:id="@+id/end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="1dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Terminar"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

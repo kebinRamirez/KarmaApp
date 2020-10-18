@@ -9,6 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
 import kotlinx.android.synthetic.main.list_item_favores.view.*
+import kotlinx.android.synthetic.main.list_item_favores.view.Pedidopor
+import kotlinx.android.synthetic.main.list_item_favores.view.detalles
+import kotlinx.android.synthetic.main.list_item_favores.view.entrega
+import kotlinx.android.synthetic.main.list_item_favores.view.estado
+import kotlinx.android.synthetic.main.list_item_favores.view.tipofavor
+import kotlinx.android.synthetic.main.list_item_movimientos.view.*
 
 class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: onListIteration): RecyclerView.Adapter<FavoresAdapter.ViewHolder>() {
 
@@ -38,7 +44,6 @@ class FavoresAdapter(val posts: ArrayList<Favor>, private val Listener: onListIt
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favor: Favor, uid: String) {
             if (uid == favor.user_askingid){
-                itemView.setBackgroundColor(Color.GREEN)
                 itemView.tipofavor.text = favor.type
                 itemView.estado.text = "Estado: " +favor.status
                 itemView.Pedidopor.text = "Pedido por: " + favor.user_asking

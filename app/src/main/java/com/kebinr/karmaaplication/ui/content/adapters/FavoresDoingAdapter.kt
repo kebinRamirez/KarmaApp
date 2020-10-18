@@ -1,6 +1,5 @@
 package com.kebinr.karmaaplication.ui.content.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +7,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
-import kotlinx.android.synthetic.main.list_item_favores.view.*
 import kotlinx.android.synthetic.main.list_item_favores_doing.view.*
-import kotlinx.android.synthetic.main.list_item_tomar_favor.view.*
 
 class FavoresDoingAdapter(val posts: ArrayList<Favor>, private val llListener: onListIteration): RecyclerView.Adapter<FavoresDoingAdapter.ViewHolder>() {
 
@@ -43,7 +40,6 @@ class FavoresDoingAdapter(val posts: ArrayList<Favor>, private val llListener: o
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(favor: Favor, uid: String) {
             if (uid != favor.user_askingid){
-                itemView.setBackgroundColor(Color.BLUE)
                 itemView.tipofavor2.text = favor.type
                 itemView.estado2.text = "Estado: " +favor.status
                 itemView.Pedidopor2.text = "Pedido por: " + favor.user_asking
