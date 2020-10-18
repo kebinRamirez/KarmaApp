@@ -22,6 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:orientation="vertical">
 
             <TextView
@@ -35,7 +37,7 @@
                 tools:text="Lorem Ipsum" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="#FFFFFF"
@@ -79,31 +81,31 @@
                     android:textColor="#3F51B5"
                     android:textSize="18sp" />
 
+                <Button
+                    android:id="@+id/chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="Chat"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Terminar"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
             </LinearLayout>
-
-            <Button
-                android:id="@+id/chat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="1dp"
-                android:text="Chat"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/end"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Terminar"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp" />
 
             <Space
                 android:layout_width="match_parent"
