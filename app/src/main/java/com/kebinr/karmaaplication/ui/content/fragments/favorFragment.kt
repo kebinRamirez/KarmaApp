@@ -1,6 +1,6 @@
 package com.kebinr.karmaaplication.ui.content.fragments
 
-import android.app.Activity
+
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -26,8 +26,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
-import kotlinx.android.synthetic.main.nav_header_main.*
-import kotlinx.android.synthetic.main.fragment_perfil.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 @AndroidEntryPoint

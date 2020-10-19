@@ -32,11 +32,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-        navigation_view.setNavigationItemSelectedListener{
 
+        navigation_view.setNavigationItemSelectedListener{
             when(it.itemId){
                 R.id.nav_pfavor->{
                     drawer.closeDrawer(GravityCompat.START)
