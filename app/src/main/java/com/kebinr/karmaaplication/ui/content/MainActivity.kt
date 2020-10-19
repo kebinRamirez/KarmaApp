@@ -35,14 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
-
         navigation_view.setNavigationItemSelectedListener{
-
 
             when(it.itemId){
                 R.id.nav_pfavor->{
-                    Log.v("pru","AL MENOS LLEGO")
                     drawer.closeDrawer(GravityCompat.START)
                     findNavController(this,R.id.nav_host_fragment).navigate(R.id.favorFragment)
                     true

@@ -1,5 +1,6 @@
 package com.kebinr.karmaaplication.ui.content.fragments
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -15,14 +17,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.model.Favor
+import com.kebinr.karmaaplication.ui.content.MainActivity
 import com.kebinr.karmaaplication.ui.content.adapters.FavoresAdapter
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
 import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.fragment_perfil.view.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 @AndroidEntryPoint
 class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListIteration{
@@ -54,6 +60,9 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
             firebasefavorRTVM.getuserInfo(userUid)
             firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
                 name = it.nombre!!
+                (activity as AppCompatActivity).supportActionBar?.title =name
+                (activity as AppCompatActivity).navigation_view.NameNav.text = name
+                (activity as AppCompatActivity).navigation_view.emailNav.text = it.email
                 karma = it.karma!!
                 favores = it.favores!!
 
