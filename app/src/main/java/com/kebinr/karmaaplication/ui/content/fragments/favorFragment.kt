@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.fragment_perfil.view.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
@@ -49,6 +50,7 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         requireView().favores_recycler.adapter = adapter
         requireView().favores_recycler.layoutManager = LinearLayoutManager(requireContext())
 
@@ -63,7 +65,9 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
                 (activity as AppCompatActivity).navigation_view.emailNav.text = it.email
                 karma = it.karma!!
                 favores = it.favores!!
+
             })
+
             firebasefavorRTVM.getValues(userUid,"")
             firebasefavorRTVM.ldfavoreslist.observe(getViewLifecycleOwner(), Observer {
                 Log.d("MyOut","Número de favores "+it.size)

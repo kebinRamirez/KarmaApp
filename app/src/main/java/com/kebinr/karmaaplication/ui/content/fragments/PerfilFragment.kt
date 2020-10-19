@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.fragment_favor.view.*
 import kotlinx.android.synthetic.main.fragment_favor.view.favores_recycler
 import kotlinx.android.synthetic.main.fragment_perfil.*
 import kotlinx.android.synthetic.main.fragment_perfil.view.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class PerfilFragment : Fragment(R.layout.fragment_perfil) {
 
@@ -57,6 +58,7 @@ class PerfilFragment : Fragment(R.layout.fragment_perfil) {
                 name = it.nombre!!
                 karma = it.karma!!
                 favores = it.favores!!
+
             })
             firebasefavorRTVM.karma.observe(getViewLifecycleOwner(), Observer{
                 karma = it

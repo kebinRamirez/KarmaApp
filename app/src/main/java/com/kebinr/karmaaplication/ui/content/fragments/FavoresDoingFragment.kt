@@ -19,6 +19,7 @@ import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favor.view.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 @AndroidEntryPoint
 class FavoresDoingFragment : Fragment(R.layout.fragment_favores_doing), FavoresDoingAdapter.onListIteration {

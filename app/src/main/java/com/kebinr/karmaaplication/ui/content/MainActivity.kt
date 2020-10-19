@@ -9,6 +9,8 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
@@ -19,6 +21,7 @@ import com.google.android.material.navigation.NavigationView
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.repository.FirebaseAuthRepository
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
+import com.kebinr.karmaaplication.viewmodel.FirebaseFavorRTViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -29,11 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
         navigation_view.setNavigationItemSelectedListener{
-            NameNav.text = "Prueba main"
-            emailNav.text = "main@gmail.com"
+
             when(it.itemId){
                 R.id.nav_pfavor->{
                     drawer.closeDrawer(GravityCompat.START)
