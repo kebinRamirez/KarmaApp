@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -13,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.kebinr.karmaaplication.R
 import com.kebinr.karmaaplication.viewmodel.FirebaseAuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 @AndroidEntryPoint
 class SaliendoAnimacionFragment : Fragment(R.layout.fragment_saliendo_animacion) {
@@ -31,6 +34,9 @@ class SaliendoAnimacionFragment : Fragment(R.layout.fragment_saliendo_animacion)
         var navController: NavController = findNavController()
         super.onViewCreated(view, savedInstanceState)
         firebaseAuthViewModel.logOut()
+        (activity as AppCompatActivity).supportActionBar?.title =""
+        (activity as AppCompatActivity).navigation_view.NameNav.text = ""
+        (activity as AppCompatActivity).navigation_view.emailNav.text = ""
         val handler = Handler()
         handler.postDelayed({
             navController.navigate(R.id.authActivity)

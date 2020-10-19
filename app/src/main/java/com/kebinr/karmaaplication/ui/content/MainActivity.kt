@@ -34,12 +34,8 @@ class MainActivity : AppCompatActivity() {
         navigation_view.setNavigationItemSelectedListener{
             NameNav.text = "Prueba main"
             emailNav.text = "main@gmail.com"
-
-
-
             when(it.itemId){
                 R.id.nav_pfavor->{
-                    Log.v("pru","AL MENOS LLEGO")
                     drawer.closeDrawer(GravityCompat.START)
                     findNavController(this,R.id.nav_host_fragment).navigate(R.id.favorFragment)
                     true
