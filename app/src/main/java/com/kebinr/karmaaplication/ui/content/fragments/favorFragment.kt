@@ -26,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.favor_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_favor.*
 import kotlinx.android.synthetic.main.fragment_favor.view.*
+import kotlinx.android.synthetic.main.fragment_perfil.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 @AndroidEntryPoint
@@ -59,8 +61,8 @@ class favorFragment : Fragment(R.layout.fragment_favor) , FavoresAdapter.onListI
             firebasefavorRTVM.user.observe(getViewLifecycleOwner(), Observer{
                 name = it.nombre!!
                 (activity as AppCompatActivity).supportActionBar?.title =name
-                (activity as AppCompatActivity).navigation_view.NameNav.text = name
-                (activity as AppCompatActivity).navigation_view.emailNav.text = it.email
+                (activity)?.NameNav?.setText(name)
+                (activity)?.emailNav?.setText(it.email)
                 karma = it.karma!!
                 favores = it.favores!!
 

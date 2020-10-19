@@ -34,12 +34,9 @@ class SaliendoAnimacionFragment : Fragment(R.layout.fragment_saliendo_animacion)
         var navController: NavController = findNavController()
         super.onViewCreated(view, savedInstanceState)
         firebaseAuthViewModel.logOut()
-        (activity as AppCompatActivity).supportActionBar?.title =""
-        (activity as AppCompatActivity).navigation_view.NameNav.text = ""
-        (activity as AppCompatActivity).navigation_view.emailNav.text = ""
         val handler = Handler()
         handler.postDelayed({
-            navController.navigate(R.id.authActivity)
+            navController.navigate(R.id.action_saliendoAnimacionFragment_to_authActivity)
         }, 100)
 
 
